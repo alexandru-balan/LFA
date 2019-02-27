@@ -1,0 +1,3 @@
+/home/prongs/CLionProjects/AFN/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/prongs/CLionProjects/AFN/cmake-build-debug/CMakeFiles/AFN.dir
+/home/prongs/CLionProjects/AFN/cmake-build-debug/CMakeFiles/edit_cache.dir

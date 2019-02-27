@@ -1,0 +1,4 @@
+/home/prongs/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/prongs/CLionProjects/AFN
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/prongs/CLionProjects/AFN/cmake-build-debug
