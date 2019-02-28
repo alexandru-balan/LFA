@@ -2,6 +2,12 @@
 
 ## AFN - Proiectul 1
 
+### Ce am folosit pentru nebunia asta?
+* The GNU/Linux (best) operating system
+* C++ 17
+* CLion by Jetbrains 
+* GCC 8.2.0
+
 ### Cum scriu AFN-ul in fisier?
 
 1. Prima linie e numarul de tranzitii (n)
