@@ -15,8 +15,25 @@ private:
     set <char, greater<>> Q;
     set <char, greater<>> E;
     set <char, greater<>> F;
+    set <char, greater<>> nextStates;
     char q0;
+    int nrOfTransitions;
     Transitions* transitions;
+
+    int delta (char symbol) {
+        set <char, greater<>> replaceStates;
+        for (int i = 0; i < nrOfTransitions; ++i) {
+            if (nextStates.count(transitions[i].currentState) && (symbol == transitions[i].symbol)) {
+                replaceStates.insert(transitions[i].nextState);
+            }
+        }
+        if(replaceStates.empty()) {
+            return 0; // The automaton does not accept the word because there are not enough transitions
+        }
+        nextStates = replaceStates;
+        return 1;
+    }
+
 public:
     AFN(const string path_to_afn) {
         ifstream f(path_to_afn);
@@ -26,7 +43,6 @@ public:
             return ;
         }
 
-        int nrOfTransitions;
         f>>nrOfTransitions;
         transitions = new Transitions[nrOfTransitions];
 
@@ -70,7 +86,29 @@ public:
             i++;
         }
 
+        nextStates.insert(q0);
+
         f.close();
+    }
+
+    void accept (string word) {
+        for (int i = 0; i < word.length(); ++i) {
+            if(!delta(word[i])) {
+                cout<<"Word is not accepted\n";
+                return;
+            }
+        }
+
+        set<char, greater<>>::iterator i;
+
+        for(i = nextStates.begin(); i != nextStates.end(); ++i) {
+            if(F.count(*i)) {
+                cout<< "Word is accepted\n";
+                return;
+            }
+        }
+
+        cout<<"Word is not accepted\n";
     }
 
     friend ostream& operator<<(ostream& out, AFN afn) {
@@ -102,6 +140,10 @@ int main() {
 
     AFN afn("afn.in");
     cout<<afn;
+
+    string word = "ababbaab";
+    cout<<"word = "<<word<<endl;
+    afn.accept(word);
 
     return 0;
 }
