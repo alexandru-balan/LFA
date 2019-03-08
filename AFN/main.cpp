@@ -35,7 +35,7 @@ private:
     }
 
 public:
-    AFN(const string path_to_afn) {
+    AFN(const string path_to_afn) : nrOfTransitions(0) {
         ifstream f(path_to_afn);
 
         if (!f) {
@@ -73,14 +73,15 @@ public:
             i++;
         }
 
-        nextStates.insert(q0);
-
         f.close();
     }
 
     void accept (string word) {
-        for (char c : word) {
-            if(!delta(c)) {
+        nextStates.clear();
+        nextStates.insert(q0);
+
+        for (int i = 0; i < word.length(); ++i) {
+            if(!delta(word[i])) {
                 cout<<"Word is not accepted\n";
                 return;
             }
@@ -128,9 +129,13 @@ int main() {
     AFN afn("afn.in");
     cout<<afn;
 
-    string word = "ababbaab";
-    cout<<"word = "<<word<<endl;
-    afn.accept(word);
+    string word1 = "ababbaab";
+    cout<<"word1 = "<<word1<<endl;
+    afn.accept(word1);
+
+    string word2 = "ab";
+    cout<<"word2 = "<<word2<<endl;
+    afn.accept(word2);
 
     return 0;
 }
