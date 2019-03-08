@@ -12,16 +12,16 @@ struct Transitions {
 
 class AFN {
 private:
-    set <char, greater<>> Q;
-    set <char, greater<>> E;
-    set <char, greater<>> F;
-    set <char, greater<>> nextStates;
+    set <char, less<>> Q;
+    set <char, less<>> E;
+    set <char, less<>> F;
+    set <char, less<>> nextStates;
     char q0;
     int nrOfTransitions;
     Transitions* transitions;
 
     int delta (char symbol) {
-        set <char, greater<>> replaceStates;
+        set <char, less<>> replaceStates;
         for (int i = 0; i < nrOfTransitions; ++i) {
             if (nextStates.count(transitions[i].currentState) && (symbol == transitions[i].symbol)) {
                 replaceStates.insert(transitions[i].nextState);
@@ -46,29 +46,16 @@ public:
         f>>nrOfTransitions;
         transitions = new Transitions[nrOfTransitions];
 
-        string line;
-        getline(f,line);
-        getline(f,line);
-        q0 = line[0];
-        Q.insert(line[0]);
-        transitions[0].currentState = line[0];
-        E.insert(line[2]);
-        transitions[0].symbol = line[2];
-        if (line[4] == '@') {
-            //Starea e finala
-            Q.insert(line[5]);
-            F.insert(line[5]);
-            transitions[0].nextState = line[5];
-        } else {
-            Q.insert(line[4]);
-            transitions[0].nextState = line[4];
-        }
+        f.get();
 
-        int i = 1;
+        int i = 0;
 
         while(!f.eof()) {
             string line;
             getline(f,line);
+            if (i == 0) {
+                q0 = line[0];
+            }
             Q.insert(line[0]);
             transitions[i].currentState = line[0];
             E.insert(line[2]);
@@ -92,8 +79,8 @@ public:
     }
 
     void accept (string word) {
-        for (int i = 0; i < word.length(); ++i) {
-            if(!delta(word[i])) {
+        for (char c : word) {
+            if(!delta(c)) {
                 cout<<"Word is not accepted\n";
                 return;
             }

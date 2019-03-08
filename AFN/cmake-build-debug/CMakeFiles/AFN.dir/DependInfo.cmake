@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/prongs/CLionProjects/AFN/main.cpp" "/home/prongs/CLionProjects/AFN/cmake-build-debug/CMakeFiles/AFN.dir/main.cpp.o"
+  "/home/prongs/Documents/gitProjects/LFA/AFN/main.cpp" "/home/prongs/Documents/gitProjects/LFA/AFN/cmake-build-debug/CMakeFiles/AFN.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
