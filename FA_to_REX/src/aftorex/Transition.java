@@ -6,9 +6,9 @@ public class Transition {
     private String symbol;
 
     public Transition(String startState, String symbol, String nextState) {
-        this.nextState = nextState;
-        this.startState = startState;
-        this.symbol = symbol;
+        this.nextState = nextState.replace("@","");
+        this.startState = startState.replace("@","");
+        this.symbol = symbol.replace("@","");
     }
 
     public String getStartState() {
