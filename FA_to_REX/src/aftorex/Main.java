@@ -8,5 +8,7 @@ public class Main {
         Automaton automaton = new Automaton("out/production/FA_to_REX/aftorex/automat.txt");
 
         System.out.println(automaton.toString());
+
+        automaton.acceptWord("ab");
     }
 }

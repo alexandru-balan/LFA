@@ -1,4 +1,4 @@
-# Install script for directory: /home/prongs/Documents/gitProjects/LFA/AFN
+# Install script for directory: /home/prongs/Documents/gitHub/LFA/AFN
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/prongs/Documents/gitProjects/LFA/AFN/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/prongs/Documents/gitHub/LFA/AFN/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
