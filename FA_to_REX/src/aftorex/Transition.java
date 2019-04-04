@@ -11,7 +11,7 @@ public class Transition {
         this.symbol = symbol.replace("@","");
     }
 
-    public String getStartState() {
+    String getStartState() {
         return startState;
     }
 
@@ -19,7 +19,7 @@ public class Transition {
         this.startState = startState;
     }
 
-    public String getNextState() {
+    String getNextState() {
         return nextState;
     }
 
@@ -27,7 +27,7 @@ public class Transition {
         this.nextState = nextState;
     }
 
-    public String getSymbol() {
+    String getSymbol() {
         return symbol;
     }
 

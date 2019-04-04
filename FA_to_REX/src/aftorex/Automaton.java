@@ -1,14 +1,11 @@
 package aftorex;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
-import java.util.stream.IntStream;
+
 
 public class Automaton {
-    private int nbOfTransitions;
     private String initialState;
     private TreeSet Q = new TreeSet<String>(Comparator.naturalOrder());
     private TreeSet E = new TreeSet<String>(Comparator.naturalOrder());
@@ -21,7 +18,7 @@ public class Automaton {
         File file = new File(path_to_file);
         Scanner scanner = new Scanner(file);
 
-        nbOfTransitions = scanner.nextInt();
+        int nbOfTransitions = scanner.nextInt();
         Transitions = new Transition[nbOfTransitions];
 
         String reminder = scanner.next();
@@ -91,7 +88,7 @@ public class Automaton {
         return builder.toString();
     }
 
-    boolean delta(String symbol) {
+    private boolean delta(String symbol) {
         TreeSet<String> replacer = new TreeSet<>(Comparator.naturalOrder());
         Iterator<String> iterator = nextStates.iterator();
 
