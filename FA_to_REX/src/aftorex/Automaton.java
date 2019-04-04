@@ -92,33 +92,49 @@ public class Automaton {
     }
 
     boolean delta(String symbol) {
-        lambdaStates.clear();
-        TreeSet replace = new TreeSet<String>(Comparator.naturalOrder());
-        for (Transition t: Transitions) {
-            Iterator<String> iterator = nextStates.iterator();
-            while (iterator.hasNext()) {
-                String state = iterator.next();
-                if (t.getStartState().equals(state) && t.getSymbol().equals(symbol)) {
-                    replace.add(t.getNextState());
-                }
-                if (t.getStartState().equals(state) && t.getSymbol().equals("!")) {
-                    String currentState = t.getStartState();
-                    String currentSymbol = t.getSymbol();
-                    while (!currentState.equals(symbol)){
+        TreeSet<String> replacer = new TreeSet<>(Comparator.naturalOrder());
+        Iterator<String> iterator = nextStates.iterator();
 
-                    }
-                }
+        while (iterator.hasNext()) {
+            String stateToEvaluate = iterator.next();
 
+            for (Transition t: Transitions) {
+                if(t.getStartState().equals(stateToEvaluate) && t.getSymbol().equals(symbol)) {
+                    replacer.add(t.getNextState());
+                }
+                if (t.getStartState().equals(stateToEvaluate) && t.getSymbol().equals("!")) {
+                    lambdaTraversal(stateToEvaluate, symbol);
+                    replacer.addAll(lambdaStates);
+
+                    /*
+                    Clean the lambdaStates set so it can be used by other states to make a lambdaTraversal
+                     */
+                    lambdaStates.clear();
+                }
             }
         }
 
-        if(replace.isEmpty()){
+        if(replacer.isEmpty()) {
             return false;
         }
-        else {
-            this.nextStates = replace;
-            return true;
+
+        nextStates = replacer;
+        return true;
+    }
+
+    private void lambdaTraversal(String state, String symbol) {
+
+        for (Transition t: Transitions) {
+            if(t.getStartState().equals(state)) {
+                if(t.getSymbol().equals(symbol)) {
+                    lambdaStates.add(t.getNextState());
+                }
+                if (t.getSymbol().equals("!")) {
+                    lambdaTraversal(t.getNextState(),symbol);
+                }
+            }
         }
+
     }
 
     boolean acceptWord(String word) {
@@ -130,7 +146,7 @@ public class Automaton {
 
         for (String s : dest) {
             if (!delta(s)) {
-                System.out.println("Word is not accepted");
+                System.out.println("Word " + word + " is not accepted");
                 return false;
             }
         }
@@ -148,11 +164,11 @@ public class Automaton {
         }
 
         if(!hasFinalStates) {
-            System.out.println("Word not accepted");
+            System.out.println("Word " + word + " is not accepted");
             return false;
         }
 
-        System.out.println("Word is accepted");
+        System.out.println("Word " + word + " is accepted");
         return true;
     }
 }
