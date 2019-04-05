@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2397c8fe-f5cc-447a-9935-207bcc80a8d9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FA_to_REX/aftorex/Automaton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FA_to_REX/aftorex/Automaton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FA_to_REX/aftorex/Transition.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FA_to_REX/aftorex/Transition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FA_to_REX/aftorex/automat_proiect.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FA_to_REX/aftorex/automat_proiect.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/aftorex/Automaton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aftorex/Automaton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aftorex/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aftorex/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/aftorex/Automaton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="109" column="110" selection-start-line="109" selection-start-column="110" selection-end-line="109" selection-end-column="110" />
+            <state relative-caret-position="204">
+              <caret line="236" selection-start-line="236" selection-end-line="236" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -29,10 +34,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/out/production/FA_to_REX/aftorex/automat_lnfa.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/aftorex/Transition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+            <state>
+              <caret column="5" selection-start-column="5" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -41,16 +51,16 @@
         <entry file="file://$PROJECT_DIR$/src/aftorex/RegularExpression.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/aftorex/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+            <state relative-caret-position="105">
+              <caret line="7" column="93" selection-start-line="7" selection-start-column="93" selection-end-line="7" selection-end-column="93" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,11 +70,7 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/out/production/FA_to_REX/aftorex/automat_proiect.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-            </state>
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -91,12 +97,13 @@
         <option value="$PROJECT_DIR$/src/aftorex/FiniteAutomaton.java" />
         <option value="$PROJECT_DIR$/src/aftorex/TypeOfAutomaton.java" />
         <option value="$PROJECT_DIR$/src/aftorex/DFA.java" />
-        <option value="$PROJECT_DIR$/out/production/FA_to_REX/aftorex/automat_proiect.txt" />
         <option value="$PROJECT_DIR$/src/aftorex/automat.txt" />
         <option value="$PROJECT_DIR$/src/aftorex/teste.txt" />
-        <option value="$PROJECT_DIR$/src/aftorex/Main.java" />
         <option value="$PROJECT_DIR$/src/aftorex/Transition.java" />
+        <option value="$PROJECT_DIR$/out/production/FA_to_REX/aftorex/automat_proiect.txt" />
+        <option value="$PROJECT_DIR$/out/production/FA_to_REX/aftorex/automat_lnfa.txt" />
         <option value="$PROJECT_DIR$/src/aftorex/Automaton.java" />
+        <option value="$PROJECT_DIR$/src/aftorex/Main.java" />
       </list>
     </option>
   </component>
@@ -112,7 +119,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -161,6 +167,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -230,18 +237,20 @@
       <workItem from="1553955559878" duration="445000" />
       <workItem from="1554039015133" duration="9812000" />
       <workItem from="1554302675851" duration="522000" />
-      <workItem from="1554384079323" duration="5327000" />
+      <workItem from="1554384079323" duration="5417000" />
+      <workItem from="1554464071799" duration="2734000" />
+      <workItem from="1554469235573" duration="5263000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28876000" />
+    <option name="totallyTimeSpent" value="36963000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19925214" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20352565" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -250,8 +259,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34486488" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.421659" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.34388646" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4213974" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -278,11 +287,21 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/aftorex/Automaton.java</url>
-          <line>158</line>
-          <properties />
-          <option name="timeStamp" value="1" />
+          <line>176</line>
+          <properties class="aftorex.Automaton" method="makeRegex">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/aftorex/Automaton.java</url>
+          <line>212</line>
+          <properties class="aftorex.Automaton" method="stateReaperMethod">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -300,9 +319,6 @@
     <entry file="file://$PROJECT_DIR$/src/aftorex/TypeOfAutomaton.java" />
     <entry file="file://$PROJECT_DIR$/src/aftorex/DFA.java" />
     <entry file="file://$PROJECT_DIR$/src/aftorex/FiniteAutomaton.java" />
-    <entry file="file://$PROJECT_DIR$/out/production/FA_to_REX/aftorex/automat_lnfa.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/aftorex/teste.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -310,48 +326,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/out/production/FA_to_REX/aftorex/automat_proiect.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/share/java/jdk-12/lib/src.zip!/java.base/java/util/TreeMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="1205" column="22" selection-start-line="1205" selection-start-column="22" selection-end-line="1205" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/aftorex/Transition.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/aftorex/RegularExpression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/aftorex/Main.java">
+    <entry file="file://$PROJECT_DIR$/out/production/FA_to_REX/aftorex/automat_proiect.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar:///usr/share/java/jdk-12/lib/src.zip!/java.base/java/util/TreeMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+        <state relative-caret-position="191">
+          <caret line="1207" selection-start-line="1207" selection-end-line="1207" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/FA_to_REX/aftorex/automat_lnfa.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aftorex/Automaton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="236" selection-start-line="236" selection-end-line="236" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/aftorex/Automaton.java">
+    <entry file="file://$PROJECT_DIR$/src/aftorex/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="109" column="110" selection-start-line="109" selection-start-column="110" selection-end-line="109" selection-end-column="110" />
+        <state relative-caret-position="105">
+          <caret line="7" column="93" selection-start-line="7" selection-start-column="93" selection-end-line="7" selection-end-column="93" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

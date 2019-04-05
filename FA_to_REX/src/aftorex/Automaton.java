@@ -13,7 +13,7 @@ public class Automaton {
     private TreeSet nextStates = new TreeSet<String>(Comparator.naturalOrder()); //Set that retains the next possible states after reading one symbol
     private TreeSet lambdaStates = new TreeSet<String>(Comparator.naturalOrder()); //Set that retains the next possible states after reading one symbol
                                                                                     //and passing though multiple lambda transitions
-    private Transition[] Transitions;
+    private ArrayList<Transition> Transitions = new ArrayList<>();
 
     /***
      *
@@ -21,41 +21,25 @@ public class Automaton {
      * @throws InputMismatchException because each automaton file MUST begin with an integer (the number of transitions)
      * @throws FileNotFoundException because path may be wrong
      */
-    Automaton(String path_to_file) throws InputMismatchException, FileNotFoundException {
+    Automaton(String path_to_file) throws InputMismatchException, FileNotFoundException{
         File file = new File(path_to_file);
         Scanner scanner = new Scanner(file);
 
-        int nbOfTransitions = scanner.nextInt();
-        Transitions = new Transition[nbOfTransitions];
-
-        /*reminder should have been the new_line character left over from reading the nb. of transitions, but instead
-        * it is also the first string from the next line
-        * BUG -> FIX ME*/
-        String reminder = scanner.next();
-        System.out.println(reminder);
-
-        Q.add(reminder.replace("@",""));
-        initialState = reminder.replace("@","");
-        if(reminder.contains("@")) {
-            F.add(reminder.replace("@",""));
-        }
 
         /*Because of the bug above, special treatment has to be given to the first line in the file*/
         boolean first = true;
 
         /*This for loop reads the automaton from the file and places the states and symbols in their respective sets*/
-        for(int i = 0; i < nbOfTransitions; ++i) {
+        while (scanner.hasNextLine()){
             String line = scanner.nextLine();
             String[] parts = line.split(" ");
-            Transition transition;
+            Transition transition = new Transition(parts[0],parts[1],parts[2]); //default treatment;
             if(first) { //special treatment for first line only
-                transition = new Transition(reminder,parts[1],parts[2]);
+                initialState = parts[0].replace("@","");
                 first = false;
             }
-            else {
-                transition = new Transition(parts[0],parts[1],parts[2]); //default treatment
-            }
-            Transitions[i] = transition;
+
+            Transitions.add(transition);
             Q.add(parts[0].replace("@",""));
             Q.add(parts[2].replace("@",""));
             E.add(parts[1]);
@@ -189,4 +173,111 @@ public class Automaton {
         System.out.println("Word " + word + " is accepted");
         return true;
     }
+
+    String makeRegex () {
+        StringBuilder result = new StringBuilder();
+
+        /*Clean the automaton and make it ready for reaping*/
+        if(F.contains(initialState)) {
+            Transition transition = new Transition("nss", "!", initialState);
+            initialState = transition.getStartState();
+            Transitions.add(transition);
+            Q.add(transition.getStartState());
+        }
+        if (F.size() > 1) {
+            Iterator<String> iterator = F.iterator();
+            for (int i = 0; i < F.size(); i++) {
+                Transition transition = new Transition(iterator.next(),"!","nes");
+                Transitions.add(transition);
+                F.remove(transition.getStartState());
+            }
+            F.add("nes");
+        }
+
+        Iterator<String> iterator = Q.iterator();
+        while (iterator.hasNext()) {
+            String state = iterator.next();
+            if(!state.equals(initialState) && !F.contains(state)) {
+                stateReaperMethod(state);
+            }
+        }
+
+        for (Transition t: Transitions
+             ) {
+            result.append(t.getSymbol());
+        }
+
+        return result.toString();
+    }
+
+    private void stateReaperMethod (String state) {
+        StringBuilder part = new StringBuilder();
+        String directExpresion = new String(), inExpression = new String(), outExpression = new String(), loopExpression = new String();
+        ArrayList<Transition> toBeRemoved = new ArrayList<>();
+        ArrayList<Transition> toBeAdded = new ArrayList<>();
+
+        for (Transition t: Transitions) {
+            if(t.getStartState().equals(state) && t.getNextState().equals(state)) {
+                loopExpression = t.getSymbol();
+                toBeRemoved.add(t);
+            }
+        }
+
+        for (Transition t: Transitions
+             ) {
+            if(!t.getStartState().equals(state) && t.getNextState().equals(state)) {
+
+                if(!t.getSymbol().equals("!")) {
+                    inExpression = t.getSymbol();
+                }
+                toBeRemoved.add(t);
+                for (Transition t2 : Transitions) {
+
+                    if (t2.getStartState().equals(state) && !t2.getNextState().equals(state)) {
+                        if(!t2.getSymbol().equals("!")) {
+                            outExpression = t2.getSymbol();
+                        }
+                        toBeRemoved.add(t2);
+
+                        /*Checking if there is already a connection between some nodes at each side of state*/
+                        for (Transition t3: Transitions
+                             ) {
+                            if(t3.getNextState().equals(t2.getNextState()) && t3.getStartState().equals(t.getStartState())) {
+                                if(!t3.getSymbol().equals("!")) {
+                                    directExpresion = t3.getSymbol();
+                                }
+                                toBeRemoved.add(t3);
+                            }
+                        }
+
+                        if(!directExpresion.isEmpty()) {
+                            part.append(directExpresion);
+                            part.append(" + ");
+                        }
+                        part.append(inExpression);
+                        if(!loopExpression.isEmpty()) {
+                            part.append(loopExpression);
+                            part.append("*");
+                        }
+                        part.append(outExpression);
+
+                        Transition transition = new Transition(t.getStartState(),part.toString(),t2.getNextState());
+                        toBeAdded.add(transition);
+                    }
+                }
+            }
+
+
+        }
+
+
+
+        /*Sanitize the automaton by removing the state, the adjacent transitions*/
+
+        Transitions.removeAll(toBeRemoved);
+        Transitions.addAll(toBeAdded);
+
+        /*Adding a new transition*/
+    }
+
 }

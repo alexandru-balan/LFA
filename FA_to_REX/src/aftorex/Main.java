@@ -14,5 +14,7 @@ public class Main {
         automaton.acceptWord("ababababababa");
         automaton.acceptWord("bbbbbbbbaaaaaa");
         automaton.acceptWord("");
+
+        System.out.println("Regex is: " + automaton.makeRegex());
     }
 }
