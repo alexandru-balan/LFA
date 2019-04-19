@@ -1,5 +1,0 @@
-r a s
-s b s
-s a t
-t b t
-t a @u

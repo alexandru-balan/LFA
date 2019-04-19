@@ -1,9 +1,0 @@
-Teste pentru automatul definit in automat_lnfa.txt
-==================================================
-
-automaton.acceptWord("ab");
-automaton.acceptWord("bb");
-automaton.acceptWord("bababababbba");
-automaton.acceptWord("bbbbbbbbba");
-automaton.acceptWord("bbbbbbbbbbbb");
-automaton.acceptWord("b");
