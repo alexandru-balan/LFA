@@ -1,0 +1,38 @@
+import java.util.Vector;
+
+/**
+ * The production class is used to create and operate with the productions of a CFG
+ */
+public class Production {
+    private String start;
+    private Vector<String> nextOptions;
+
+    /**
+     * Initializing a Production object
+     * @param start = The start symbol for a given production
+     * @param options = A set of possible terminals, nonterminals or both for the CFG to go into
+     */
+    Production(String start, Vector<String> options) {
+        this.nextOptions = new Vector<>();
+        this.nextOptions = options;
+
+        this.start = start;
+    }
+
+    /**
+     *
+     * @return The production object in a more user friendly, easily readable format
+     */
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(this.start).append(" -> ");
+        for (String option : this.nextOptions) {
+            stringBuilder.append(option).append(" | ");
+        }
+        // Deleting the last occurrence "| " because it is the last option
+        stringBuilder.delete(stringBuilder.lastIndexOf("| "),stringBuilder.toString().length());
+
+        return stringBuilder.toString();
+    }
+}
