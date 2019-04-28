@@ -1,3 +1,5 @@
+import com.sun.jdi.VMCannotBeModifiedException;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
@@ -10,6 +12,7 @@ public class ContextFreeGrammar {
     private Set<String> Terminals = new HashSet<>();
     private String StartState;
     private Vector<Production> Productions = new Vector<>();
+    private Vector<String> generatedWords = new Vector<>();
 
     /**
      * @param path_to_file = Path in filesystem where the CFG is retained
@@ -36,11 +39,69 @@ public class ContextFreeGrammar {
 
             Production production;
             Vector<String> options = new Vector<>(Arrays.asList(parts).subList(1, parts.length));
-            production = new Production(parts[0],options);
+            production = new Production(parts[0].trim(),options);
 
             /*Adding the production to our internal Productions vector*/
-            Productions.add(production);
+            this.Productions.add(production);
         }
+    }
+
+    private Production findProduction (String startState) {
+        for (Production production : this.Productions) {
+            if(production.getStart().equals(startState)) {
+                return production;
+            }
+        }
+
+        return null;
+    }
+
+    void findWordsOfMaxLength (int maxLength) {
+
+        /*Finding the start production*/
+        Production start = new Production();
+
+        start = findProduction(this.StartState);
+
+        traverseGrammar(start, maxLength, 0);
+
+        System.out.println(generatedWords);
+    }
+
+    /**
+     * This function will call itself recursively and will generate words of a given max-length
+     * @param start = The root production, our point of start
+     */
+    private String traverseGrammar (Production start, int maxLength, int currentLength) {
+        StringBuilder word = new StringBuilder();
+        if (currentLength >= maxLength) {
+            return word.toString();
+        }
+        else {
+            for (String option : start.getNextOptions()) {
+                option = option.trim();
+                for (int i = 0; i < option.length(); i++) {
+                    if (this.NonTerminals.contains(String.valueOf(option.charAt(i)))) {
+                        Production production = new Production();
+                        production = findProduction((String.valueOf(option.charAt(i))));
+                        word.append(traverseGrammar(production,maxLength,currentLength));
+                    }
+                    if(this.Terminals.contains(String.valueOf(option.charAt(i)))) {
+                        word.append(option.charAt(i));
+                        currentLength ++;
+                    }
+                    if (String.valueOf(option.charAt(i)).equals("@")) {
+                        return word.toString();
+                    }
+                }
+            }
+        }
+
+        if (word.toString().length() <= maxLength) {
+            this.generatedWords.add(word.toString());
+        }
+
+        return word.toString();
     }
 
     /**

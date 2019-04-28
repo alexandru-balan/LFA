@@ -7,16 +7,31 @@ public class Production {
     private String start;
     private Vector<String> nextOptions;
 
+
+    Production() {
+        this.start = "0";
+        this.nextOptions = new Vector<>();
+        this.nextOptions.add("0");
+    }
+
     /**
      * Initializing a Production object
      * @param start = The start symbol for a given production
-     * @param options = A set of possible terminals, nonterminals or both for the CFG to go into
+     * @param options = A set of possible terminals, non-terminals or both for the CFG to go into
      */
     Production(String start, Vector<String> options) {
         this.nextOptions = new Vector<>();
         this.nextOptions = options;
 
         this.start = start;
+    }
+
+    public String getStart() {
+        return start;
+    }
+
+    public Vector<String> getNextOptions() {
+        return nextOptions;
     }
 
     /**

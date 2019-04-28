@@ -6,5 +6,7 @@ public class Main {
         ContextFreeGrammar contextFreeGrammar = new ContextFreeGrammar("CFG.txt");
 
         System.out.println(contextFreeGrammar);
+
+        contextFreeGrammar.findWordsOfMaxLength(3);
     }
 }
