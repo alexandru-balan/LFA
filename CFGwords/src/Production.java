@@ -51,7 +51,7 @@ public class Production {
         return stringBuilder.toString();
     }
 
-    public static int parseOption (String option, ContextFreeGrammar cfg) {
+    static int parseOption(String option, ContextFreeGrammar cfg) {
         int legth = 0;
         for (int i = 0; i < option.length(); i++) {
             if (cfg.getTerminals().contains(String.valueOf(option.charAt(i)))) {
@@ -62,14 +62,4 @@ public class Production {
         return legth;
     }
 
-    public static boolean canStopHere (String option, ContextFreeGrammar cfg) {
-        boolean canStop = true;
-        for (int i = 0; i < option.length(); i++) {
-            if (cfg.getNonTerminals().contains(String.valueOf(option.charAt(i)))) {
-                canStop = false;
-            }
-        }
-
-        return canStop;
-    }
 }

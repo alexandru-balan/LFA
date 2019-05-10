@@ -46,12 +46,8 @@ public class ContextFreeGrammar {
         }
     }
 
-    public Set<String> getTerminals() {
+    Set<String> getTerminals() {
         return Terminals;
-    }
-
-    public Set<String> getNonTerminals() {
-        return NonTerminals;
     }
 
     private Production findProduction (String startState) {
@@ -67,7 +63,7 @@ public class ContextFreeGrammar {
     void findWordsOfMaxLength (int maxLength) {
 
         /*Finding the start production*/
-        Production start = new Production();
+        Production start;
 
         start = findProduction(this.StartState);
 
@@ -93,7 +89,7 @@ public class ContextFreeGrammar {
         }
 
         for (String option:start.getNextOptions()) {
-            String newstring = new String();
+            String newstring = "";
             option = option.trim();
             StringBuilder word = new StringBuilder();
             word.append(partialWord);
@@ -128,7 +124,7 @@ public class ContextFreeGrammar {
 
             }
 
-            String result = new String();
+            String result;
 
 
 

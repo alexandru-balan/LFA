@@ -7,6 +7,6 @@ public class Main {
 
         System.out.println(contextFreeGrammar);
 
-        contextFreeGrammar.findWordsOfMaxLength(4);
+        contextFreeGrammar.findWordsOfMaxLength(3);
     }
 }
