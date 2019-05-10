@@ -46,6 +46,14 @@ public class ContextFreeGrammar {
         }
     }
 
+    public Set<String> getTerminals() {
+        return Terminals;
+    }
+
+    public Set<String> getNonTerminals() {
+        return NonTerminals;
+    }
+
     private Production findProduction (String startState) {
         for (Production production : this.Productions) {
             if(production.getStart().equals(startState)) {
@@ -63,7 +71,7 @@ public class ContextFreeGrammar {
 
         start = findProduction(this.StartState);
 
-        traverseGrammar(start, maxLength, 0);
+        traverseGrammar(start, maxLength, 0, "");
 
         System.out.println(generatedWords);
     }
@@ -72,36 +80,77 @@ public class ContextFreeGrammar {
      * This function will call itself recursively and will generate words of a given max-length
      * @param start = The root production, our point of start
      */
-    private String traverseGrammar (Production start, int maxLength, int currentLength) {
-        StringBuilder word = new StringBuilder();
-        if (currentLength >= maxLength) {
-            return word.toString();
+    private void traverseGrammar (Production start, int maxLength, int currentLength, String partialWord) {
+
+
+
+        if(partialWord.equals("?")) {
+            partialWord = "";
         }
-        else {
-            for (String option : start.getNextOptions()) {
-                option = option.trim();
-                for (int i = 0; i < option.length(); i++) {
-                    if (this.NonTerminals.contains(String.valueOf(option.charAt(i)))) {
-                        Production production = new Production();
-                        production = findProduction((String.valueOf(option.charAt(i))));
-                        word.append(traverseGrammar(production,maxLength,currentLength));
+
+        if (currentLength > maxLength) {
+            return;
+        }
+
+        for (String option:start.getNextOptions()) {
+            String newstring = new String();
+            option = option.trim();
+            StringBuilder word = new StringBuilder();
+            word.append(partialWord);
+            currentLength += Production.parseOption(option,this);
+            Production production = new Production();
+
+            if (currentLength > maxLength) {
+                currentLength -= Production.parseOption(option,this);
+                continue;
+            }
+
+            for (int i = 0; i < option.length(); i++) {
+                if(Terminals.contains(String.valueOf(option.charAt(i)))) {
+                    if(partialWord.contains("?")) {
+                        newstring += option.charAt(i);
                     }
-                    if(this.Terminals.contains(String.valueOf(option.charAt(i)))) {
+                    else {
                         word.append(option.charAt(i));
-                        currentLength ++;
-                    }
-                    if (String.valueOf(option.charAt(i)).equals("@")) {
-                        return word.toString();
                     }
                 }
+
+
+                if (NonTerminals.contains(String.valueOf(option.charAt(i)))) {
+                    if(partialWord.contains("?")) {
+                        newstring += "?";
+                    }
+                    else {
+                        word.append("?");
+                    }
+                    production = findProduction(String.valueOf(option.charAt(i)));
+                }
+
             }
-        }
 
-        if (word.toString().length() <= maxLength) {
-            this.generatedWords.add(word.toString());
-        }
+            String result = new String();
 
-        return word.toString();
+
+
+            if (partialWord.contains("?")) {
+                result = word.toString().replaceFirst("\\?", newstring);
+            }
+            else {
+                result = word.toString();
+            }
+
+
+            if (result.contains("?")) {
+                traverseGrammar(production,maxLength,currentLength,result);
+            }
+            else {
+                if (result.equals("")){
+                    result = "@";
+                }
+                generatedWords.add(result);
+            }
+            currentLength -= Production.parseOption(option,this);
+        }
     }
 
     /**
